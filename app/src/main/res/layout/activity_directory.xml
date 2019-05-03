@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="100">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            >
+
+            <include layout="@layout/layout_directory_toolbar"/>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_weight="65"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <TextView
+            android:id="@+id/lblDataIniziale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/data_iniziale"
+            android:textColor="@color/black"
+            android:textSize="23sp"
+            android:labelFor="@+id/dataInizialeText"/>
+
+        <EditText
+            android:id="@+id/dataInizialeText"
+            android:layout_width="118dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="25dp"
+            android:layout_toEndOf="@+id/lblDataIniziale"
+            android:clickable="true"
+            android:cursorVisible="false"
+            android:ems="10"
+            android:focusable="false"
+            android:focusableInTouchMode="true"
+            android:inputType="date"
+            android:importantForAutofill="no"/>
+
+        <TextView
+            android:id="@+id/lblDataFinale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lblDataIniziale"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="13dp"
+            android:text="@string/data_finale"
+            android:textColor="@color/black"
+            android:textSize="23sp"
+            android:labelFor="@+id/dataFinaleText"/>
+
+        <EditText
+            android:id="@+id/dataFinaleText"
+            android:layout_width="118dp"
+            android:layout_height="41dp"
+            android:layout_below="@+id/dataInizialeText"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="-4dp"
+            android:layout_toEndOf="@+id/lblDataFinale"
+            android:clickable="true"
+            android:cursorVisible="false"
+            android:ems="10"
+            android:focusable="false"
+            android:focusableInTouchMode="true"
+            android:inputType="date"
+            android:importantForAutofill="no"/>
+
+        <Button
+            android:id="@+id/btnRicercaStatistiche"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dataFinaleText"
+            android:layout_gravity="fill_horizontal"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="15sp"
+            android:layout_marginHorizontal="10dp"
+            android:background="@color/green"
+            android:text="@string/cerca"
+            android:textAlignment="center"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/lblLibriConContanti"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnRicercaStatistiche"
+            android:layout_marginStart="10sp"
+            android:layout_marginTop="-1dp"
+            android:text="@string/libri_con_contanti"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/libriConContantiLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnRicercaStatistiche"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="-1dp"
+            android:layout_toEndOf="@+id/lblLibriConContanti"
+            android:text="@string/zero"
+            android:textColor="@color/red"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/lblLibriConBuoni"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lblLibriConContanti"
+            android:layout_marginStart="10sp"
+            android:layout_marginTop="1dp"
+            android:text="@string/libri_con_buoni"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_gravity="fill"/>
+
+        <TextView
+            android:id="@+id/libriConBuoniLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/libriConContantiLabel"
+            android:layout_marginStart="38dp"
+            android:layout_marginTop="1dp"
+            android:layout_toEndOf="@+id/lblLibriConBuoni"
+            android:text="@string/zero"
+            android:textColor="@color/green"
+            android:textSize="18sp"
+            android:layout_gravity="fill"/>
+
+        <TextView
+            android:id="@+id/lblSpesaContanti"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnRicercaStatistiche"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="-1dp"
+            android:layout_toEndOf="@+id/libriConContantiLabel"
+            android:text="@string/spesa"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/spesaConContantiLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnRicercaStatistiche"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="-1dp"
+            android:layout_toEndOf="@+id/lblSpesaContanti"
+            android:text="@string/zero"
+            android:textColor="@color/red"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/lblSpesaBuoni"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lblSpesaContanti"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="1dp"
+            android:layout_toEndOf="@+id/libriConBuoniLabel"
+            android:text="@string/spesa"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:layout_gravity="fill"/>
+
+        <TextView
+            android:id="@+id/spesaConBuoniLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spesaConContantiLabel"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="1dp"
+            android:layout_toEndOf="@+id/lblSpesaBuoni"
+            android:text="@string/zero"
+            android:textColor="@color/green"
+            android:textSize="18sp"
+            android:layout_gravity="fill"/>
+
+    </RelativeLayout>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_weight="35"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/recyclerViewLibri"
+            android:padding="5dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</LinearLayout>

@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Visualizza Statistiche</string>
+    <string name="zero">0</string>
+    <string name="settings">Impostazioni</string>
+    <string name="spesa">Spesa:</string>
+    <string name="cerca">Cerca</string>
+    <string name="data_finale">Data Finale:</string>
+    <string name="data_iniziale">Data Iniziale:</string>
+    <string name="libri_con_buoni">Libri con Buoni:</string>
+    <string name="libri_con_contanti">Libri con Contanti:</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="login_header">Login</string>
+
+    <!-- Messages Preferences -->
+    <string name="login_title">Username</string>
+    <string name="password_title">Password</string>
+    <string name="ftp_title">FTP Server</string>
+
+</resources>

@@ -1,0 +1,24 @@
+<androidx.preference.PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory app:title="@string/login_header">
+
+        <EditTextPreference
+            app:key="username"
+            app:title="@string/login_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <EditTextPreference
+            app:key="password"
+            app:title="@string/password_title"
+            app:useSimpleSummaryProvider="false"
+            />
+
+        <EditTextPreference
+            app:key="ftp_server"
+            app:title="@string/ftp_title"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+</androidx.preference.PreferenceScreen>
