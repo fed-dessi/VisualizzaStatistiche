@@ -21,7 +21,6 @@ import android.widget.Toast;
 import com.example.my.visualizzastatistiche.adapter.DirectoriesRecyclerAdapter;
 import com.example.my.visualizzastatistiche.models.Directory;
 import com.example.my.visualizzastatistiche.util.DataBaseHelper;
-import com.example.my.visualizzastatistiche.util.VerticalSpacingItemDecorator;
 
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
@@ -68,8 +67,6 @@ public class MainActivity extends AppCompatActivity implements DirectoriesRecycl
     private void initRecyclerView(){
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(linearLayoutManager);
-        VerticalSpacingItemDecorator itemDecorator = new VerticalSpacingItemDecorator(10);
-        mRecyclerView.addItemDecoration(itemDecorator );
         mDirectoriesRecyclerAdapter = new DirectoriesRecyclerAdapter(mDirectory, this);
         mRecyclerView.setAdapter(mDirectoriesRecyclerAdapter);
     }

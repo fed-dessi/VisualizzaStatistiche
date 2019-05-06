@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="100">
+    android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -19,48 +19,52 @@
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <RelativeLayout
-        android:layout_weight="65"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/lblDataIniziale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:labelFor="@+id/dataInizialeText"
             android:text="@string/data_iniziale"
             android:textColor="@color/black"
             android:textSize="23sp"
-            android:labelFor="@+id/dataInizialeText"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/dataInizialeText"
             android:layout_width="118dp"
             android:layout_height="41dp"
             android:layout_marginStart="24dp"
-            android:layout_marginEnd="25dp"
             android:layout_toEndOf="@+id/lblDataIniziale"
             android:clickable="true"
             android:cursorVisible="false"
             android:ems="10"
             android:focusable="false"
             android:focusableInTouchMode="true"
+            android:importantForAutofill="no"
             android:inputType="date"
-            android:importantForAutofill="no"/>
+            app:layout_constraintStart_toEndOf="@+id/lblDataIniziale"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/lblDataFinale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/lblDataIniziale"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="13dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:labelFor="@+id/dataFinaleText"
             android:text="@string/data_finale"
             android:textColor="@color/black"
             android:textSize="23sp"
-            android:labelFor="@+id/dataFinaleText"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblDataIniziale" />
 
         <EditText
             android:id="@+id/dataFinaleText"
@@ -68,15 +72,16 @@
             android:layout_height="41dp"
             android:layout_below="@+id/dataInizialeText"
             android:layout_marginStart="34dp"
-            android:layout_marginTop="-4dp"
             android:layout_toEndOf="@+id/lblDataFinale"
             android:clickable="true"
             android:cursorVisible="false"
             android:ems="10"
             android:focusable="false"
             android:focusableInTouchMode="true"
+            android:importantForAutofill="no"
             android:inputType="date"
-            android:importantForAutofill="no"/>
+            app:layout_constraintStart_toEndOf="@+id/lblDataFinale"
+            app:layout_constraintTop_toBottomOf="@+id/dataInizialeText" />
 
         <Button
             android:id="@+id/btnRicercaStatistiche"
@@ -84,127 +89,153 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/dataFinaleText"
             android:layout_gravity="fill_horizontal"
-            android:layout_marginTop="3dp"
-            android:layout_marginBottom="15sp"
-            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
             android:background="@color/green"
             android:text="@string/cerca"
             android:textAlignment="center"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dataFinaleText" />
 
         <TextView
             android:id="@+id/lblLibriConContanti"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/btnRicercaStatistiche"
-            android:layout_marginStart="10sp"
-            android:layout_marginTop="-1dp"
+            android:layout_gravity="fill"
+            android:layout_marginStart="60dp"
             android:text="@string/libri_con_contanti"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/spesaConContantiLabel"
+            app:layout_constraintTop_toBottomOf="@+id/lblLibriConBuoni" />
 
         <TextView
             android:id="@+id/libriConContantiLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/btnRicercaStatistiche"
-            android:layout_marginStart="17dp"
-            android:layout_marginTop="-1dp"
+            android:layout_gravity="fill"
+            android:layout_marginStart="12dp"
             android:layout_toEndOf="@+id/lblLibriConContanti"
             android:text="@string/zero"
             android:textColor="@color/red"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/lblLibriConContanti"
+            app:layout_constraintTop_toBottomOf="@+id/libriConBuoniLabel" />
 
         <TextView
             android:id="@+id/lblLibriConBuoni"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/lblLibriConContanti"
-            android:layout_marginStart="10sp"
-            android:layout_marginTop="1dp"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="fill"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="12dp"
             android:text="@string/libri_con_buoni"
             android:textColor="@color/black"
             android:textSize="18sp"
-            android:layout_gravity="fill"/>
+            app:layout_constraintStart_toEndOf="@+id/spesaConBuoniLabel"
+            app:layout_constraintTop_toBottomOf="@+id/btnRicercaStatistiche" />
 
         <TextView
             android:id="@+id/libriConBuoniLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/libriConContantiLabel"
-            android:layout_marginStart="38dp"
-            android:layout_marginTop="1dp"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="fill"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="12dp"
             android:layout_toEndOf="@+id/lblLibriConBuoni"
             android:text="@string/zero"
             android:textColor="@color/green"
             android:textSize="18sp"
-            android:layout_gravity="fill"/>
+            app:layout_constraintBottom_toTopOf="@+id/libriConContantiLabel"
+            app:layout_constraintStart_toEndOf="@+id/lblLibriConBuoni"
+            app:layout_constraintTop_toBottomOf="@+id/btnRicercaStatistiche" />
 
         <TextView
             android:id="@+id/lblSpesaContanti"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/btnRicercaStatistiche"
-            android:layout_marginStart="26dp"
-            android:layout_marginTop="-1dp"
+            android:layout_gravity="fill"
+            android:layout_marginStart="8dp"
             android:layout_toEndOf="@+id/libriConContantiLabel"
             android:text="@string/spesa"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblSpesaBuoni" />
 
         <TextView
             android:id="@+id/spesaConContantiLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/btnRicercaStatistiche"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="-1dp"
+            android:layout_gravity="fill"
+            android:layout_marginStart="8dp"
             android:layout_toEndOf="@+id/lblSpesaContanti"
             android:text="@string/zero"
             android:textColor="@color/red"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/lblSpesaContanti"
+            app:layout_constraintTop_toBottomOf="@+id/spesaConBuoniLabel" />
 
         <TextView
             android:id="@+id/lblSpesaBuoni"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/lblSpesaContanti"
-            android:layout_marginStart="27dp"
-            android:layout_marginTop="1dp"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="fill"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
             android:layout_toEndOf="@+id/libriConBuoniLabel"
             android:text="@string/spesa"
             android:textColor="@color/black"
             android:textSize="18sp"
-            android:layout_gravity="fill"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnRicercaStatistiche" />
 
         <TextView
             android:id="@+id/spesaConBuoniLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/spesaConContantiLabel"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="1dp"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="fill"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="13dp"
             android:layout_toEndOf="@+id/lblSpesaBuoni"
             android:text="@string/zero"
             android:textColor="@color/green"
             android:textSize="18sp"
-            android:layout_gravity="fill"/>
-
-    </RelativeLayout>
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_weight="35"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+            app:layout_constraintStart_toEndOf="@+id/lblSpesaBuoni"
+            app:layout_constraintTop_toBottomOf="@+id/btnRicercaStatistiche" />
 
 
-        <androidx.recyclerview.widget.RecyclerView
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:id="@+id/recyclerViewLibri"
-            android:padding="5dp">
+            android:layout_height="0dp"
+            android:layout_marginTop="13dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblSpesaContanti">
 
-        </androidx.recyclerview.widget.RecyclerView>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewLibri"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

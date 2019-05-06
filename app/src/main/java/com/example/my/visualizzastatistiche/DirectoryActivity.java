@@ -25,7 +25,6 @@ import android.widget.Toast;
 import com.example.my.visualizzastatistiche.adapter.BookRecyclerAdapter;
 import com.example.my.visualizzastatistiche.models.Book;
 import com.example.my.visualizzastatistiche.models.Directory;
-import com.example.my.visualizzastatistiche.util.VerticalSpacingItemDecorator;
 
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
@@ -103,8 +102,6 @@ public class DirectoryActivity extends AppCompatActivity implements BookRecycler
     private void initRecyclerView(){
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         mRecyclerViewLibri.setLayoutManager(linearLayoutManager);
-        VerticalSpacingItemDecorator itemDecorator = new VerticalSpacingItemDecorator(10);
-        mRecyclerViewLibri.addItemDecoration(itemDecorator );
         mBooksRecyclerAdapter = new BookRecyclerAdapter(mBooks, this);
         mRecyclerViewLibri.setAdapter(mBooksRecyclerAdapter);
     }
