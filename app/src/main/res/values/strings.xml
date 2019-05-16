@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Visualizza Statistiche</string>
     <string name="zero">0</string>
+    <string name="zeroSoldi">0.00€</string>
     <string name="settings">Impostazioni</string>
     <string name="spesa">Spesa:</string>
     <string name="cerca">Cerca</string>

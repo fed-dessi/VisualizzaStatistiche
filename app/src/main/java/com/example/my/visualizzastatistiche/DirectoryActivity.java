@@ -198,13 +198,13 @@ public class DirectoryActivity extends AppCompatActivity implements BookRecycler
                     } else {
                         while (dataIniziale.compareTo(dataFinale) < 0 || dataIniziale.compareTo(dataFinale) == 0) {
                             //SELECTION query
-                            try (Cursor searchResultSet = db.rawQuery("SELECT * FROM vendita, statistiche, inventario WHERE data='" + formatter.format(dataIniziale) + "' AND vendita.id = statistiche.venditaID AND inventario.id = statistiche.libriID", null)) {
+                            try (Cursor searchResultSet = db.rawQuery("SELECT vendita.id, vendita.costo, vendita.metodo, inventario.nome FROM vendita, statistiche, inventario WHERE data='" + formatter.format(dataIniziale) + "' AND vendita.id = statistiche.venditaID AND inventario.id = statistiche.libriID", null)) {
                                 if(searchResultSet.moveToFirst()) {
                                     while(!searchResultSet.isAfterLast()) {
                                         Book libro = new Book();
                                         libro.setDate(dataIniziale);
-                                        libro.setName(searchResultSet.getString(8));
-                                        if (searchResultSet.getString(3).equals("B")) {
+                                        libro.setName(searchResultSet.getString(3));
+                                        if (searchResultSet.getString(2).equals("B")) {
                                             libro.setMetodo("B");
                                             quantitaBuoni++;
                                             if(lastVenditaID == null || !(searchResultSet.getInt(0) == lastVenditaID))
@@ -233,9 +233,13 @@ public class DirectoryActivity extends AppCompatActivity implements BookRecycler
                     }
                     //Update the labels
                     mLibriConContantiLabel.setText(String.format(Locale.getDefault(), "%d", quantitaContanti));
-                    mSpesaConContanti.setText(costoContanti.toString() + "€");
+                    if(costoContanti.compareTo(BigDecimal.ZERO) != 0) {
+                        mSpesaConContanti.setText(costoContanti.toString() + "€");
+                    }
                     mLibriConBuoniLabel.setText(String.format(Locale.getDefault(), "%d", quantitaBuoni));
-                    mSpesaConBuoni.setText(costoBuoni.toString() + "€");
+                    if(costoBuoni.compareTo(BigDecimal.ZERO) != 0) {
+                        mSpesaConBuoni.setText(costoBuoni.toString() + "€");
+                    }
                     // close the connections we don't need
                     db.close();
                     mBooksRecyclerAdapter.notifyDataSetChanged();

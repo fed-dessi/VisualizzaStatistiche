@@ -89,8 +89,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/dataFinaleText"
             android:layout_gravity="fill_horizontal"
-            android:layout_marginTop="12dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="10dp"
             android:background="@color/green"
             android:text="@string/cerca"
@@ -106,11 +106,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/btnRicercaStatistiche"
             android:layout_gravity="fill"
-            android:layout_marginStart="60dp"
+            android:layout_marginStart="122dp"
             android:text="@string/libri_con_contanti"
             android:textColor="@color/black"
             android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@+id/spesaConContantiLabel"
+            app:layout_constraintStart_toEndOf="@+id/lblSpesaContanti"
             app:layout_constraintTop_toBottomOf="@+id/lblLibriConBuoni" />
 
         <TextView
@@ -134,12 +134,12 @@
             android:layout_below="@+id/lblLibriConContanti"
             android:layout_alignParentBottom="true"
             android:layout_gravity="fill"
-            android:layout_marginStart="60dp"
+            android:layout_marginStart="122dp"
             android:layout_marginTop="12dp"
             android:text="@string/libri_con_buoni"
             android:textColor="@color/black"
             android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@+id/spesaConBuoniLabel"
+            app:layout_constraintStart_toEndOf="@+id/lblSpesaBuoni"
             app:layout_constraintTop_toBottomOf="@+id/btnRicercaStatistiche" />
 
         <TextView
@@ -181,7 +181,7 @@
             android:layout_gravity="fill"
             android:layout_marginStart="8dp"
             android:layout_toEndOf="@+id/lblSpesaContanti"
-            android:text="@string/zero"
+            android:text="@string/zeroSoldi"
             android:textColor="@color/red"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/lblSpesaContanti"
@@ -213,7 +213,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="13dp"
             android:layout_toEndOf="@+id/lblSpesaBuoni"
-            android:text="@string/zero"
+            android:text="@string/zeroSoldi"
             android:textColor="@color/green"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/lblSpesaBuoni"
