@@ -95,7 +95,8 @@ public class DirectoryActivity extends AppCompatActivity implements BookRecycler
         initRecyclerView();
         //specify the listeners to use
         setListeners();
-        //fakeEntries();
+        //Set the initial dates for the pickers;
+        setInitialDates();
     }
 
 
@@ -112,6 +113,19 @@ public class DirectoryActivity extends AppCompatActivity implements BookRecycler
         mLibriConContantiLabel.setText("0");
         mSpesaConContanti.setText("0.00" + "€");
         mBooks.clear();
+    }
+
+    private void setInitialDates(){
+        //Get the current date and format it, then set it as the text to the pickers
+        myCalendar = Calendar.getInstance();
+        int day = myCalendar.get(Calendar.DAY_OF_MONTH);
+        int month = myCalendar.get(Calendar.MONTH);
+        int year = myCalendar.get(Calendar.YEAR);
+        String myFormat = "dd/MM/yyyy";
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.ITALY);
+        myCalendar.set(year, month,day);
+        mDataIniziale.setText(sdf.format(myCalendar.getTime()));
+        mDataFinale.setText(sdf.format(myCalendar.getTime()));
     }
 
     //Sets the listeners for this class
@@ -138,7 +152,7 @@ public class DirectoryActivity extends AppCompatActivity implements BookRecycler
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         myCalendar.set(year, month,dayOfMonth);
-                        String myFormat = "dd/MM/yyyy"; //In which you need put here
+                        String myFormat = "dd/MM/yyyy";
                         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.ITALY);
 
                         mDataIniziale.setText(sdf.format(myCalendar.getTime()));
@@ -204,6 +218,7 @@ public class DirectoryActivity extends AppCompatActivity implements BookRecycler
                                         Book libro = new Book();
                                         libro.setDate(dataIniziale);
                                         libro.setName(searchResultSet.getString(3));
+                                        libro.setVenditaID(searchResultSet.getInt(0));
                                         if (searchResultSet.getString(2).equals("B")) {
                                             libro.setMetodo("B");
                                             quantitaBuoni++;
@@ -243,7 +258,6 @@ public class DirectoryActivity extends AppCompatActivity implements BookRecycler
                     // close the connections we don't need
                     db.close();
                     mBooksRecyclerAdapter.notifyDataSetChanged();
-
 
                 } catch (Exception e) {
                     e.printStackTrace();

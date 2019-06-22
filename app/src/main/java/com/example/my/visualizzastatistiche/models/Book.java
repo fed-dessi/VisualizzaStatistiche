@@ -6,6 +6,9 @@ public class Book {
     private String name;
     private Date date;
     private String metodo;
+    private int venditaID;
+
+
 
     public Book() {
     }
@@ -33,4 +36,8 @@ public class Book {
     public void setMetodo(String metodo) {
         this.metodo = metodo;
     }
+
+    public int getVenditaID() {return venditaID;}
+
+    public void setVenditaID(int venditaID) {this.venditaID = venditaID;}
 }

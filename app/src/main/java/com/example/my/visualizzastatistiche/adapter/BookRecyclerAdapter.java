@@ -21,6 +21,10 @@ public class BookRecyclerAdapter extends RecyclerView.Adapter<BookRecyclerAdapte
     private ArrayList<Book> mBooks;
     private BookRecyclerAdapter.OnBookListener mOnBookListener;
 
+    //Private variables to switch the background color
+    private int lastVenditaID = 0;
+    private String currentColor = "#4CAF50";
+
     public BookRecyclerAdapter(ArrayList<Book> mBooks, OnBookListener mOnBookListener) {
         this.mBooks = mBooks;
         this.mOnBookListener = mOnBookListener;
@@ -35,6 +39,7 @@ public class BookRecyclerAdapter extends RecyclerView.Adapter<BookRecyclerAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+
         //Set the date in a correct format
         try{
             String dataFormattata = Utility.getMonthFromNumber(mBooks.get(i).getDate());
@@ -44,12 +49,20 @@ public class BookRecyclerAdapter extends RecyclerView.Adapter<BookRecyclerAdapte
         }
         viewHolder.title.setText(mBooks.get(i).getName());
 
-        //Set the background color based on the method
-        if(mBooks.get(i).getMetodo().equals("B")){
-            viewHolder.title.setBackgroundColor(Color.parseColor("#4CAF50"));
+
+        //Set the background color based on the sale
+        if(mBooks.get(i).getVenditaID() == lastVenditaID){
+            viewHolder.title.setBackgroundColor(Color.parseColor(currentColor));
         } else {
-            viewHolder.title.setBackgroundColor(Color.parseColor("#EC0A0A"));
+            currentColor = colorSwitcher(currentColor);
+            lastVenditaID = mBooks.get(i).getVenditaID();
+            viewHolder.title.setBackgroundColor(Color.parseColor(currentColor));
+        }
+        //If the background is red, then make the text white
+        if(currentColor.equals("#EC0A0A")){
             viewHolder.title.setTextColor(Color.parseColor("#FFFFFF"));
+        }else{
+            viewHolder.title.setTextColor(Color.parseColor("#000000"));
         }
     }
 
@@ -78,5 +91,14 @@ public class BookRecyclerAdapter extends RecyclerView.Adapter<BookRecyclerAdapte
 
     public interface OnBookListener{
         void onBookClick(int position);
+    }
+
+    private String colorSwitcher(String currentColor){
+        String newColor = "#4CAF50";
+        if(currentColor.equals("#4CAF50")){
+            newColor = "#EC0A0A";
+            return newColor;
+        }
+        return newColor;
     }
 }
