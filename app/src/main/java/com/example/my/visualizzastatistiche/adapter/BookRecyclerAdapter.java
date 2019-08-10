@@ -20,6 +20,8 @@ public class BookRecyclerAdapter extends RecyclerView.Adapter<BookRecyclerAdapte
 
     private ArrayList<Book> mBooks;
     private BookRecyclerAdapter.OnBookListener mOnBookListener;
+    private int mExpandedPosition = -1;
+    private int previousExpandedPosition = -1;
 
     //Private variables to switch the background color
     private int lastVenditaID = 0;
@@ -38,8 +40,8 @@ public class BookRecyclerAdapter extends RecyclerView.Adapter<BookRecyclerAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
+        final boolean isExpanded = i==mExpandedPosition;
         //Set the date in a correct format
         try{
             String dataFormattata = Utility.getMonthFromNumber(mBooks.get(i).getDate());
@@ -64,6 +66,29 @@ public class BookRecyclerAdapter extends RecyclerView.Adapter<BookRecyclerAdapte
         }else{
             viewHolder.title.setTextColor(Color.parseColor("#000000"));
         }
+
+        //Set the details LinearLayout TextViews to the proper text
+        viewHolder.expandedTitle.setText(mBooks.get(i).getName());
+        viewHolder.author.setText(mBooks.get(i).getAuthor());
+        viewHolder.editor.setText(mBooks.get(i).getEditor());
+        viewHolder.year.setText(mBooks.get(i).getYear());
+
+        //Expand the book details when we click the name
+        viewHolder.bookDetails.setVisibility(isExpanded?View.VISIBLE:View.GONE);
+        viewHolder.itemView.setActivated(isExpanded);
+
+        if (isExpanded) {
+            previousExpandedPosition = i;
+        }
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mExpandedPosition = isExpanded ? -1:i;
+                notifyItemChanged(previousExpandedPosition);
+                notifyItemChanged(i);
+            }
+        });
     }
 
     @Override
@@ -74,11 +99,21 @@ public class BookRecyclerAdapter extends RecyclerView.Adapter<BookRecyclerAdapte
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView title; //add timestamp later;
         TextView date;
+        TextView expandedTitle;
+        TextView author;
+        TextView editor;
+        TextView year;
+        View bookDetails;
         BookRecyclerAdapter.OnBookListener onbookListener;
         public ViewHolder(@NonNull View itemView, BookRecyclerAdapter.OnBookListener onbookListener) {
             super(itemView);
             title = itemView.findViewById(R.id.book_title);
             date = itemView.findViewById(R.id.sale_date);
+            bookDetails = itemView.findViewById(R.id.book_details);
+            expandedTitle = itemView.findViewById(R.id.expanded_book_title);
+            author = itemView.findViewById(R.id.book_author);
+            editor = itemView.findViewById(R.id.book_editor);
+            year = itemView.findViewById(R.id.book_year);
             this.onbookListener = onbookListener;
             itemView.setOnClickListener(this);
         }

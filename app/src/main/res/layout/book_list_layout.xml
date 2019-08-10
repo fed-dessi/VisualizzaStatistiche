@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:weightSum="100"
-    android:gravity="center_vertical">
+    android:gravity="center_vertical"
+    android:animateLayoutChanges="true">
 
     <TextView
         android:layout_width="0dp"
@@ -34,5 +35,41 @@
         android:layout_weight="20"
         android:background="@drawable/border" />
 
+    <LinearLayout
+        android:id="@+id/book_details"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/expanded_book_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/book_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/book_editor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:textSize="15sp"/>
+        <TextView
+            android:id="@+id/book_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="6dp"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
 
 </LinearLayout>

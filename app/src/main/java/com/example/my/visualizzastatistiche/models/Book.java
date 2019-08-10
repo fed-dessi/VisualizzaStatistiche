@@ -6,11 +6,38 @@ public class Book {
     private String name;
     private Date date;
     private String metodo;
+    private String author;
+    private String year;
+    private String editor;
     private int venditaID;
 
 
 
     public Book() {
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public String getEditor() {
+        return editor;
+    }
+
+    public void setEditor(String editor) {
+        this.editor = editor;
     }
 
     public String getName() {
