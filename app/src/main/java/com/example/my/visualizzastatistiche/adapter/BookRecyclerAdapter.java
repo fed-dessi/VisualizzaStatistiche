@@ -20,6 +20,8 @@ public class BookRecyclerAdapter extends RecyclerView.Adapter<BookRecyclerAdapte
 
     private ArrayList<Book> mBooks;
     private BookRecyclerAdapter.OnBookListener mOnBookListener;
+
+    //We use these two variables to get the position in the recyclerview of the expanded view
     private int mExpandedPosition = -1;
     private int previousExpandedPosition = -1;
 
@@ -41,6 +43,7 @@ public class BookRecyclerAdapter extends RecyclerView.Adapter<BookRecyclerAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
+        //Get the position of the expanded View
         final boolean isExpanded = i==mExpandedPosition;
         //Set the date in a correct format
         try{
@@ -73,10 +76,11 @@ public class BookRecyclerAdapter extends RecyclerView.Adapter<BookRecyclerAdapte
         viewHolder.editor.setText(mBooks.get(i).getEditor());
         viewHolder.year.setText(mBooks.get(i).getYear());
 
-        //Expand the book details when we click the name
+        //Expand the book details when we click the name of the book
         viewHolder.bookDetails.setVisibility(isExpanded?View.VISIBLE:View.GONE);
         viewHolder.itemView.setActivated(isExpanded);
 
+        //We only want one expanded View at the time so if we click a new book we need to close the previously open View
         if (isExpanded) {
             previousExpandedPosition = i;
         }
