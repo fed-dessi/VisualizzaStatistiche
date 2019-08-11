@@ -3,73 +3,78 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:weightSum="100"
-    android:gravity="center_vertical"
-    android:animateLayoutChanges="true">
-
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="77"
-        android:id="@+id/book_title"
-        android:textSize="23sp"
-        android:lines="1"
-        android:text=""
-        android:padding="10dp"
-        android:textColor="@color/black"
-        >
-    </TextView>
-
-    <View
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="3"
-        android:background="@drawable/border"
-        />
-
-    <TextView
-        android:id="@+id/sale_date"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="20"
-        android:background="@drawable/border" />
+    android:animateLayoutChanges="true"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/book_details"
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:weightSum="100"
+        android:gravity="center_vertical">
 
         <TextView
-            android:id="@+id/expanded_book_title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="6dp"
-            android:textSize="15sp"/>
+            android:layout_weight="77"
+            android:id="@+id/book_title"
+            android:textSize="23sp"
+            android:lines="1"
+            android:text=""
+            android:padding="10dp"
+            android:textColor="@color/black"
+            >
+        </TextView>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:background="@drawable/border"
+            />
 
         <TextView
-            android:id="@+id/book_author"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="6dp"
-            android:textSize="15sp"/>
+            android:id="@+id/sale_date"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"
+            android:background="@drawable/border" />
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/book_editor"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/book_details"
+            android:visibility="gone"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="6dp"
-            android:textSize="15sp"/>
-        <TextView
-            android:id="@+id/book_year"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="6dp"
-            android:textSize="15sp"/>
+            android:gravity="center"
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/expanded_book_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:textSize="15sp"/>
 
+            <TextView
+                android:id="@+id/book_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/book_editor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:textSize="15sp"/>
+            <TextView
+                android:id="@+id/book_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
 </LinearLayout>
