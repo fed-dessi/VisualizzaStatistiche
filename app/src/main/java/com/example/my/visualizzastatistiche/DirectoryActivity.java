@@ -212,7 +212,7 @@ public class DirectoryActivity extends AppCompatActivity implements BookRecycler
                     } else {
                         while (dataIniziale.compareTo(dataFinale) < 0 || dataIniziale.compareTo(dataFinale) == 0) {
                             //SELECTION query
-                            try (Cursor searchResultSet = db.rawQuery("SELECT vendita.id, vendita.costo, vendita.metodo, inventario.nome, inventario.autore, inventario.casa, inventario.anno FROM vendita, statistiche, inventario WHERE data='" + formatter.format(dataIniziale) + "' AND vendita.id = statistiche.venditaID AND inventario.id = statistiche.libriID", null)) {
+                            try (Cursor searchResultSet = db.rawQuery("SELECT vendita.id, vendita.costo, vendita.metodo, inventario.nome, inventario.autore, inventario.casa, inventario.anno, inventario.indice FROM vendita, statistiche, inventario WHERE data='" + formatter.format(dataIniziale) + "' AND vendita.id = statistiche.venditaID AND inventario.id = statistiche.libriID", null)) {
                                 if(searchResultSet.moveToFirst()) {
                                     while(!searchResultSet.isAfterLast()) {
                                         Book libro = new Book();
@@ -222,6 +222,7 @@ public class DirectoryActivity extends AppCompatActivity implements BookRecycler
                                         libro.setAuthor(searchResultSet.getString(4));
                                         libro.setEditor(searchResultSet.getString(5));
                                         libro.setYear(searchResultSet.getString(6));
+                                        libro.setIndex(searchResultSet.getString(7));
                                         if (searchResultSet.getString(2).equals("B")) {
                                             libro.setMetodo("B");
                                             quantitaBuoni++;

@@ -75,6 +75,15 @@ public class BookRecyclerAdapter extends RecyclerView.Adapter<BookRecyclerAdapte
         viewHolder.author.setText(mBooks.get(i).getAuthor());
         viewHolder.editor.setText(mBooks.get(i).getEditor());
         viewHolder.year.setText(mBooks.get(i).getYear());
+        viewHolder.index.setText(mBooks.get(i).getIndex());
+        if(mBooks.get(i).getIndex().equals("3")){
+            viewHolder.index.setTextColor(Color.parseColor("#4CAF50"));
+        }else if(mBooks.get(i).getIndex().equals("2")){
+            viewHolder.index.setTextColor(Color.parseColor("#FF9800"));
+        }else{
+            viewHolder.index.setTextColor(Color.parseColor("#EC0A0A"));
+        }
+        viewHolder.expandedIndex.setText(mBooks.get(i).getIndex());
 
         //Expand the book details when we click the name of the book
         viewHolder.bookDetails.setVisibility(isExpanded?View.VISIBLE:View.GONE);
@@ -107,6 +116,8 @@ public class BookRecyclerAdapter extends RecyclerView.Adapter<BookRecyclerAdapte
         TextView author;
         TextView editor;
         TextView year;
+        TextView index;
+        TextView expandedIndex;
         View bookDetails;
         BookRecyclerAdapter.OnBookListener onbookListener;
         ViewHolder(@NonNull View itemView, BookRecyclerAdapter.OnBookListener onbookListener) {
@@ -118,6 +129,9 @@ public class BookRecyclerAdapter extends RecyclerView.Adapter<BookRecyclerAdapte
             author = itemView.findViewById(R.id.book_author);
             editor = itemView.findViewById(R.id.book_editor);
             year = itemView.findViewById(R.id.book_year);
+            index = itemView.findViewById(R.id.book_index);
+            expandedIndex = itemView.findViewById(R.id.expanded_book_index);
+
             this.onbookListener = onbookListener;
             itemView.setOnClickListener(this);
         }

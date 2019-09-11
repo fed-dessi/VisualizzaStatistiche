@@ -25,20 +25,31 @@
             android:textColor="@color/black"
             >
         </TextView>
-
+        <!--
+        Add a small "space" view in between views
         <View
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3"
+            android:layout_weight="1"
             android:background="@drawable/border"
             />
+        -->
 
         <TextView
             android:id="@+id/sale_date"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="20"
+            android:layout_weight="18"
             android:background="@drawable/border" />
+        <TextView
+            android:id="@+id/book_index"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:background="@drawable/border"
+            android:textSize="24sp"
+            android:textColor="@color/black"/>
         </LinearLayout>
 
         <LinearLayout
@@ -71,6 +82,12 @@
                 android:textSize="15sp"/>
             <TextView
                 android:id="@+id/book_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:textSize="15sp"/>
+            <TextView
+                android:id="@+id/expanded_book_index"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="6dp"

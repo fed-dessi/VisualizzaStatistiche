@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements DirectoriesRecycl
         }
 
         setSupportActionBar((Toolbar) findViewById(R.id.directories_toolbar));
-        setTitle("Directories");
+        setTitle("Postazioni disponibili");
     }
 
     private void initRecyclerView(){
@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements DirectoriesRecycl
         mDirectoriesRecyclerAdapter = new DirectoriesRecyclerAdapter(mDirectory, this);
         mRecyclerView.setAdapter(mDirectoriesRecyclerAdapter);
     }
+
     private void openFtpConnection(){
         SharedPreferences myPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         String url = myPrefs.getString("ftp_server",null);
